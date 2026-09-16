@@ -2,15 +2,28 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private Animator animator;
+    private PlayerControls playerControls;
+
+
+    void Awake()
     {
-        
+        animator = GetComponent<Animator>();
+        playerControls = GetComponent<PlayerControls>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        if(playerControls.AreaSwin() == true)
+        {
+            animator.SetBool("pSwim", playerControls.SwimValue());
+        }
+        else
+        {
+            animator.SetInteger("pMove", playerControls.MoveValue());
+            animator.SetInteger("pJump", playerControls.JumpValue());
+        }        
     }
 }

@@ -29,6 +29,7 @@ public class PlayerControls : MonoBehaviour
     private bool areaSwim;
     private bool swim;
 
+
     private Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
 
@@ -183,6 +184,8 @@ public class PlayerControls : MonoBehaviour
     }
 
 
+    // ******** DETECTION ***********
+
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Climb"))
@@ -207,6 +210,29 @@ public class PlayerControls : MonoBehaviour
             areaSwim = false;
         }
     }
+
+    // ******** RETURN ***********
+
+    public int MoveValue()
+    {
+        return (int)direction.x;
+    }
+
+    public int JumpValue()
+    {
+        return (int)rigidbody2D.linearVelocityY;
+    }
+
+    public bool SwimValue()
+    {
+        return swim;
+    }
+
+    public bool AreaSwin()
+    {
+        return areaSwim;
+    }
+
 
 
     bool Grounded()
