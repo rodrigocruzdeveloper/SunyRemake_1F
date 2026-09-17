@@ -18,12 +18,18 @@ public class PlayerAnimator : MonoBehaviour
     {
         if(playerControls.AreaSwin() == true)
         {
-            animator.SetBool("pSwim", playerControls.SwimValue());
+           
+            animator.SetBool("pSwim", playerControls.AreaSwin());
         }
         else
         {
-            animator.SetInteger("pMove", playerControls.MoveValue());
+
             animator.SetInteger("pJump", playerControls.JumpValue());
-        }        
+            animator.SetBool("pClimb", playerControls.ClimbingValue());
+        }
+
+        animator.SetInteger("pMove", playerControls.MoveValueX() + playerControls.MoveValueY());
+        animator.SetBool("pGround", playerControls.Grounded());
+
     }
 }

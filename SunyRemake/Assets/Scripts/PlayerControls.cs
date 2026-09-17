@@ -213,9 +213,14 @@ public class PlayerControls : MonoBehaviour
 
     // ******** RETURN ***********
 
-    public int MoveValue()
+    public int MoveValueX()
     {
         return (int)direction.x;
+    }
+
+    public int MoveValueY()
+    {
+        return (int)direction.y;
     }
 
     public int JumpValue()
@@ -233,9 +238,12 @@ public class PlayerControls : MonoBehaviour
         return areaSwim;
     }
 
+    public bool ClimbingValue()
+    {
+        return climbing;
+    }
 
-
-    bool Grounded()
+    public bool Grounded()
     {
         return Physics2D.OverlapBox(sensorGround.position, sensorSize, 0, layerGround);
     }
